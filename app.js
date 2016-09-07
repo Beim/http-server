@@ -1,6 +1,7 @@
 const app = require('koa')()
 const koaRouter = require('koa-router')()
 const path = require('path')
+const serve = require('koa-static')
 
 const routeOpts = require('./routes/config.json')
 for (let key in routeOpts) {
@@ -10,5 +11,6 @@ for (let key in routeOpts) {
     }
 }
 app.use(koaRouter.routes())
+app.use(serve(path.resolve(__dirname, 'public')))
 
 module.exports = app

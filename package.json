@@ -1,10 +1,14 @@
 {
-  "name": "httpserver",
-  "version": "1.0.0",
+  "name": "beim-httpserver",
+  "version": "1.1.0",
   "description": "",
-  "main": "app.js",
+  "main": "./bin/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./bin/server.js",
+    "start": "./bin/server.js"
+  },
+  "bin": {
+    "beim-httpserver": "./bin/server.js"
   },
   "author": "",
   "license": "ISC",
