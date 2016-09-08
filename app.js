@@ -10,6 +10,7 @@ for (let key in routeOpts) {
         koaRouter.use(key, elem.routes(), elem.allowedMethods())
     }
 }
+// 路由
 app.use(koaRouter.routes())
 app.use(serve(path.resolve(__dirname, 'public')))
 

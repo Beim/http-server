@@ -3,6 +3,13 @@ const fs = require('fs')
     , CWD = process.cwd()
 
 
+/**
+ * 解析路径
+ * 
+ * @param {String} path
+ * @return {String}
+ * @api public
+ */
 const rsPath = (path) => {
     if (!path)
         return Path.resolve.bind(null, CWD)
@@ -10,12 +17,25 @@ const rsPath = (path) => {
         return Path.resolve.bind(null, CWD, path)
 }
 
+/**
+ * 获取路径中最后的文件名
+ * 
+ * @param {String} p
+ * @return {String}
+ * @api public
+ */
 const parseFileName = (p) => {
     let arr = p.split('/')
     return arr[arr.length - 1]
 }
 
-
+/**
+ * 获取文件列表
+ * 
+ * @param {String} path
+ * @return {Object}
+ * @api public
+ */
 const getDirInfo = (path) => {
     const getPath = rsPath(path)
     const result = {
@@ -33,13 +53,15 @@ const getDirInfo = (path) => {
                     let path = getPath(i)
                     fs.stat(path, (err, stats) => {
                         path = path.split(CWD)[1]
-                        if (path[0] === '/') path = path.slice(1)
-                        let parr = path.split('/')
-                        let name = parr[parr.length - 1]
-                        if (stats.isFile()) {
-                            result.files.push({ type: 'file', path, name })
-                        } else if (stats.isDirectory()) {
-                            result.dirs.push({ type: 'dir', path, name })
+                        if (path) {
+                            if (path[0] === '/') path = path.slice(1)
+                            let parr = path.split('/')
+                            let name = parr[parr.length - 1]
+                            if (stats.isFile()) {
+                                result.files.push({ type: 'file', path, name })
+                            } else if (stats.isDirectory()) {
+                                result.dirs.push({ type: 'dir', path, name })
+                            }
                         }
                         res1()
                     })
@@ -59,6 +81,13 @@ const getDirInfo = (path) => {
     })
 }
 
+/**
+ * 获取文件
+ * 
+ * @param {String} path
+ * @return {Object}
+ * @api public
+ */
 const getFile = (path) => {
     return new Promise((res, rej) => {
         path = rsPath(path)()

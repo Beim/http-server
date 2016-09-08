@@ -1,0 +1,66 @@
+html, body {
+    height: 100%;
+}
+.background {
+    background-size:cover;
+    /*overflow: hidden;*/
+    padding: 1px;
+    height: 100%;
+}
+.container {
+    /*margin: 160px 20% 0 20%;*/
+    padding: 10px;
+}
+
+@media screen and (min-width:1200px) {
+    .container {
+        margin: 160px 20% 0 20%;
+    }
+}
+
+.catalog {
+    margin-bottom: 20px;
+}
+
+.path {
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.main {
+    margin-top: 20px;
+}
+
+.block {
+    height: 200px;
+}
+
+.box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 0px;
+    
+}
+
+.box-pic {
+    height: 60%;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.box-name {
+    height: 20%;
+    width: 40%;
+    text-align: center;
+    cursor: pointer;
+}
+
+img {
+    height: 80%;
+    width: 80%;
+}
